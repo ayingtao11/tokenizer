@@ -74,8 +74,12 @@ def tokenize(str):
     if status == True:
         for key in dict:
             for key2 in dict:
-                if dict[key2] == key:
-                    dict[key2] = dict[key]
+                for i in range(len(dict[key2])):
+                    if dict[key2][i] == key:
+                        #dict[key2][i] = dict[key]
+                        head = dict[key2][:i]
+                        tail = dict[key2][i+1:]
+                        dict[key2] = head + dict[key] + tail
         for key in dict:
             print(key+" = "+dict[key])
     
@@ -87,4 +91,4 @@ def tokenize(str):
 # infile.read()
 
 # must separated by \n
-tokenize("x = 0;\ny = x;\nz = x+y;")
+tokenize("x = 2;\ny = x;\nz = x+y;")
